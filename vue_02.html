@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .reprovado {
+      color: red;
+    }
+    .aprovado {
+      background-color: lightgreen;
+    }
+    .excelente {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <!-- <button @click="count++;" v-if="count < 10">
+      O contador é: {{ count }}
+    </button>
+    <p v-else>
+      Acabaram os seus clicks
+    </p> -->
+    <ul v-if="alunos.length > 0">
+      <li v-for="(aluno, index) in alunos" 
+      class="importante"
+      v-bind:class="{ reprovado: aluno.nota < 5,
+         aprovado: aluno.nota >= 7,
+        excelente: aluno.nota >= 8 
+      }">
+        {{ index + 1 }} - Nome: {{ aluno.nome }} => nota = {{ aluno.nota }}
+      </li>
+    </ul>
+    <p v-else>
+      Não há notas lançadas
+    </p>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="teste.js"></script>
+</body>
+</html>
