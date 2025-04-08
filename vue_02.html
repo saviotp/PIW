@@ -25,6 +25,15 @@
     <p v-else>
       Acabaram os seus clicks
     </p> -->
+    <form @submit.prevent="lancarNota">
+      <input type="checkbox" v-model="marcado" value="1">
+      {{ marcado }} <br>
+      <label for="nova">
+        Nova nota: <input id="nova" name="nova" type="text" v-model="novaNota">
+      </label>
+      <input type="submit">
+    </form>
+    
     <ul v-if="alunos.length > 0">
       <li v-for="(aluno, index) in alunos" 
       class="importante"
