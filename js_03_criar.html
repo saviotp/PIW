@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemons!</title>
+    <style>
+        .fundoVerde {
+            background-color: green;
+        }
+    </style>
+</head>
+<body id="body">
+    <h1 id="titulo">Observe os pokemóns!</h1>
+    <button onclick="alterarTexto()">Alterar texto</button>
+    <button onclick="adicionarTag()">Adicionar Tag</button>
+</body>
+
+<script>_html.html
+    function alterarTexto() {
+        const titulo = document.getElementById("titulo");
+        titulo.innerHTML = "Teste";
+
+        //Adiciona item a uma classe do CSS
+        titulo.classList.add("fundoVerde")
+    }
+
+    function adicionarTag() {
+        //Cria elementos HTML
+        const novaH6 = document.createElement("h6")
+        const body = document.getElementById("body");
+        //appendChild adiciona elementos dentro de outros no HTML
+        body.appendChild(novaH6);
+        novaH6.innerHTML = "nova tag";
+    }
+
+    const html = document.getElementById("html");
+    //nome da funcao e o que ocorre
+    html.addEventListener("click", (event) => {
+        adicionarTag();
+    })
+</script>
+
+</html>
