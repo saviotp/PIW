@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HarryMons!</title>
+</head>
+<body>
+    <button onclick="mostrarDadosNaTela()">Mostar personagens</button>
+</body>
+
+<script>
+    async function getNomePersonagensHarryPotter() {
+        const harryPotterAPIRequest = await fetch("https://hp-api.onrender.com/api/characters")
+
+        const dadosJsonHarryPotter = await harryPotterAPIRequest.json();
+        
+        return dadosJsonHarryPotter;
+    }
+
+    let i = 0;
+    async function mostrarDadosNaTela() {
+        const dadosPersonagem = await getNomePersonagensHarryPotter();
+
+        const p = document.createElement("p");
+        p.innerText = `${dadosPersonagem[i].name}`;
+        document.body.appendChild(p);
+
+        const img = document.createElement("img");
+        img.src = dadosPersonagem[i].image;
+        document.body.append(img);
+
+        i++;
+    }
+</script>
+</html>
