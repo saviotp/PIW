@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="potao" onclick="getNomesHarryPotter()">Pesquisar Nomes</button>
+
+    <button id="pesquisarPersonagem" onclick="mostrarDadosNaTela()">Pesquisar Personagem Específico</button>
+</body>
+
+<script>
+    /* USANDO FETCH
+    const minhaRequisicao = fetch("https://hp-api.onrender.com/api/characters")
+
+    //como o código é rápido, aqui não irá imprimir nada
+    //pois a informação demorará a chegar
+    console.log(minhaRequisicao);
+
+    //aqui, faz-se uma promessa para ser executada apenas depois do processo
+    console.log.then((resposta) => {
+        //aqui, o elemento json ainda não foi acessado
+        console.log(resposta);
+
+        //para acessar o elemento json, precisa-se usar o método json()
+        //como ele é uma promise, usa-se outro then
+        resposta.json().then ((meuJson) => {
+            console.log(meuJson);
+        })
+    })
+    */
+
+    /* EXEMPLO PRÁTICO
+    const harryPotterAPIRequest = fetch("https://hp-api.onrender.com/api/characters")
+
+    harryPotterAPIRequest.then ((respostaRequisicao) => {
+        console.log("a requisição foi realizada com sucesso");
+        console.log(respostaRequisicao.status);
+
+        respostaRequisicao.json().then ((respostaJson) => {
+            console.log(respostaJson);
+        })
+    })
+    */
+
+    /* USANDO ASYNC AWAIT
+    async function getDadosHarryPotter() {
+        //toda parte assíncrona usa AWAIT
+        const harryPotterAPIRequest = await fetch("https://hp-api.onrender.com/api/characters");
+
+        //quando a resquisição é feita
+        console.log("a requisição foi realizada com sucesso");
+        console.log(harryPotterAPIRequest.status);
+        
+        //quando os dados json são processados
+        const dadosJsonHarryPotter = await harryPotterAPIRequest.json();
+        console.log(dadosJsonHarryPotter);
+    }
+    
+    getDadosHarryPotter();
+    */
+
+
+    async function getNomesHarryPotter() {
+        const harryPotterAPIRequest = await fetch("https://hp-api.onrender.com/api/characters")
+
+        const dadosJsonHarryPotter = await harryPotterAPIRequest.json();
+
+        dadosJsonHarryPotter.map((i) => {
+            console.log(`Nome: ${i.name}`);
+            console.log(`Casa: ${i.house}\n \n`);
+            console.log(`Id: ${i.id}`);
+        })
+    }
+
+    async function getDadosPersonagemEspecifico(idPersonagem) {
+        const harryPotterAPIRequest = await fetch(`https://hp-api.onrender.com/api/character/${idPersonagem}`);
+
+        const dadosJsonHarryPotter = await harryPotterAPIRequest.json();
+
+        dadosJsonHarryPotter.map((i) => {
+            console.log(`Nome: ${i.name}`);
+            console.log(`Casa: ${i.house}\n \n`);
+        })
+
+        return dadosJsonHarryPotter;
+    }
+
+    getDadosPersonagemEspecifico("9c8ce8c7-ae0a-4646-920f-09c071862f10")
+
+    async function mostrarDadosNaTela() {
+        const dadosPersonagem = await getDadosPersonagemEspecifico("9c8ce8c7-ae0a-4646-920f-09c071862f10");
+
+        const p = document.createElement("p");
+        p.innerText = `${dadosPersonagem[0].name} -- ${dadosPersonagem[0].house} -- ${dadosPersonagem[0].ancestry}`;
+
+        document.body.appendChild(p);
+    }
+</script>
+</html>
