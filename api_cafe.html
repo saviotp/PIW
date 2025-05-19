@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API!</title>
+
+    <style>
+        img {
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body id="corpo-pagina">
+    <h1>Checando se sei mexer com outra API!</h1>
+</body>
+
+<script>
+    async function coletarDadosAPI() {
+        const dadosAPI = await fetch ("https://api.sampleapis.com/coffee/hot");
+        const dadosAPIJson = await dadosAPI.json()
+        return dadosAPIJson;
+    }
+
+    async function mostrarDadosAPI() {
+        const dadosAPI = await coletarDadosAPI();
+        
+        
+        dadosAPI.map ((dados) => {
+            let corpoPagina = document.getElementById("corpo-pagina");
+
+            let novoTitulo = document.createElement("h3");
+            let novaFoto = document.createElement("img");
+            let novoDescricao = document.createElement("p");
+            let novaDiv = document.createElement("div");
+
+            novoTitulo.innerText = dados.title;
+            novaFoto.src = dados.image
+            novoDescricao.innerText = dados.description;
+
+            novaDiv.appendChild(novoTitulo);
+            novaDiv.appendChild(novaFoto);
+            novaDiv.appendChild(novoDescricao);
+
+            corpoPagina.appendChild(novaDiv);
+        })
+    }
+
+    mostrarDadosAPI();
+</script>
+</html>
