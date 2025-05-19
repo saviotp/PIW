@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Alunos!</title>
+</head>
+<body>
+    <h1>LISTA DE ALUNOS</h1>
+    <ul>
+        <li><p>JOÃO</p></li>
+        <li><p>E</p></li>
+        <li><p>MARIA</p></li>
+        <li><p>CAÇADORES</p></li>
+        <li><p>DE</p></li>
+        <li><p>BRUXAS</p></li>
+    </ul>
+</body>
+
+<script>
+    let alunos = document.querySelectorAll("li p");
+    alunos.forEach((element, index) => {
+        
+        if (index % 2 === 0) {
+            element.style.color = "red";
+        }
+        
+    });
+</script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio!</title>
+</head>
+<body>
+    <button id="botao" onclick="mudarCor()">mude a cor!</button>
+</body>
+
+<script>
+    function mudarCor() {
+        let r = Math.floor(Math.random() * 255);
+        let g = Math.floor(Math.random() * 255);
+        let b = Math.floor(Math.random() * 255);
+
+        document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
+</script>
+</html>

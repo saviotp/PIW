@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de Input</title>
+</head>
+<body>
+    <p>Coloque aqui o preço do seu produto:</p>
+    <input id="preco" type="number" onchange="calcularResultado()">
+
+    <p>Coloque aqui a quantidade de produtos:</p>
+    <input id="quantidade" type="number" onchange="calcularResultado()">
+
+    <p>Aqui está o valor calculado:</p>
+    <p id="resultado"></p>
+</body>
+
+<script>
+
+    function calcularResultado() {
+        let preco = document.getElementById("preco").value;
+        let quantidade = document.getElementById("quantidade").value; 
+        let mostrarResultado = document.getElementById("resultado");
+
+        let resultado = (preco * quantidade);
+
+        mostrarResultado.innerHTML = resultado;
+    }
+
+</script>
+</html>
