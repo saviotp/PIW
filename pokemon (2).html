@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemons!</title>
+    <style>
+        .pokemon {
+            display: inline-block;
+        }
+
+        img {
+            height: 100px;
+            width: 100px;
+        }
+
+    </style>
+</head>
+<body id="body">
+    <h1 id="titulo">Observe os pokemóns!</h1>
+</body>
+
+<script>
+
+    let i = 0;
+    function adicionarTag() {
+        i++;
+
+        //Cria elementos HTML
+        
+        let novaDiv = document.createElement("div");
+        let novoPokemon = document.createElement("img");
+        let novoNumero = document.createElement("p");
+
+        let body = document.getElementById("body");
+
+        novaDiv.appendChild(novoPokemon);
+        novaDiv.appendChild(novoNumero);
+
+        //NÃO POSSO esquecer que é ATRIBUTO
+        novoPokemon = novoPokemon.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i}.png`
+        novoNumero = novoNumero.innerText = `#${i}`;
+
+        body.appendChild(novaDiv);
+
+        //appendChild adiciona elementos dentro de outros no HTML
+        novaDiv.classList.add("pokemon");
+
+    }
+
+    let html = document.getElementById("html");
+    //nome da funcao e o que ocorre
+    html.addEventListener("click", (event) => {
+        adicionarTag();
+    })
+
+    
+</script>
+
+</html>
